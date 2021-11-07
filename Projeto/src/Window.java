@@ -76,6 +76,17 @@ public class Window {
 		frame.add(response, BorderLayout.CENTER);
 //		frame.add(response, BorderLayout.SOUTH);
 		
+// 		TENTATIVA DE CENTRAR O TITULO
+		
+//		FontMetrics fm = frame.getFontMetrics(frame.getFont());
+//		int frameWidth = frame.getWidth();
+//      int titleWidth = fm.stringWidth("Cliente");
+//      int spaceWidth = fm.stringWidth(" ");
+//      int centerPos = (frameWidth / 2) - (titleWidth / 2);
+//      int spaceCount = centerPos / spaceWidth;
+//      String pad = "";
+//      pad = String.format("%" + (spaceCount - 14) + "s", pad);
+//      frame.setTitle(pad + "Cliente");
 
 		
 
