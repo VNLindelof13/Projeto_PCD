@@ -19,6 +19,7 @@ public class CloudByte implements Serializable {
 	public byte getValue(){ 
 			return (byte) Math.abs(value);
 	}
+	
 	/**
 	 * Test if parity bit has expected value
 	 * @return parity checks

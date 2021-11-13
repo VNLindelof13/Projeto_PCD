@@ -22,85 +22,81 @@ import java.awt.event.ComponentEvent;
 
 public class Window {
 
-	private JFrame frame;
+    private JFrame frame;
 
-	public Window() {
+    public Window() {
 
-		frame = new JFrame("Client");
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		addFrameContent();
+        frame = new JFrame("Client");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        addFrameContent();
+        
+        frame.pack();
+    }
 
-		frame.pack();
-	}
+    public void open() {
+        frame.setVisible(true);
+    }
 
-	public void open() {
-		frame.setVisible(true);
-	}
+    private void addFrameContent() {
+        //    frame.setLayout(new GridLayout(1,3));
+        frame.setLayout(new BorderLayout());
+        
+        Container t = new Container();
+        t.setLayout(new FlowLayout());
 
-	private void addFrameContent() {
-		//	frame.setLayout(new GridLayout(1,3));
-		frame.setLayout(new BorderLayout());
+        JLabel label = new JLabel("Posição a consultar:");
+        t.add(label);
 
-		Container t = new Container();
-		t.setLayout(new FlowLayout());
+        JTextField position = new JTextField("1000");
+        position.setPreferredSize( new Dimension(100,20));;
+        t.add(position);
 
-		JLabel label = new JLabel("Posição a consultar:");
-		t.add(label);
+        JLabel label2 = new JLabel("Comprimento:");
+        t.add(label2);
 
-		JTextField position = new JTextField("1000");
-		position.setPreferredSize( new Dimension(100,20));;
-		t.add(position);
+        JTextField length = new JTextField("10");
+        length.setPreferredSize( new Dimension(100,20));;
+        t.add(length);
 
-		JLabel label2 = new JLabel("Comprimento:");
-		t.add(label2);
+        JButton button = new JButton("Consultar");
+        button.addActionListener(new ActionListener() {
 
-		JTextField length = new JTextField("10");
-		length.setPreferredSize( new Dimension(100,20));;
-		t.add(length);
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //    JOptionPane.showMessageDialog(frame, check.isSelected() ? "checked" : "not checked");
 
-		JButton button = new JButton("Consultar");
-		button.addActionListener(new ActionListener() {
+            }
+        });
+        t.add(button);    
+        
+        frame.add(t, BorderLayout.NORTH);
+        
+        JTextField response = new JTextField("Respostas aparecerão aqui...");
+        response.setPreferredSize( new Dimension(frame.getWidth(),70));;
+        frame.add(response, BorderLayout.CENTER);
+//        frame.add(response, BorderLayout.SOUTH);
+        
+//         TENTATIVA DE CENTRAR O TITULO
+        
+//        FontMetrics fm = frame.getFontMetrics(frame.getFont());
+//        int frameWidth = frame.getWidth();
+//      int titleWidth = fm.stringWidth("Cliente");
+//      int spaceWidth = fm.stringWidth(" ");
+//      int centerPos = (frameWidth / 2) - (titleWidth / 2);
+//      int spaceCount = centerPos / spaceWidth;
+//      String pad = "";
+//      pad = String.format("%" + (spaceCount - 14) + "s", pad);
+//      frame.setTitle(pad + "Cliente");
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//	JOptionPane.showMessageDialog(frame, check.isSelected() ? "checked" : "not checked");
-
-			}
-		});
-		t.add(button);	
-
-		frame.add(t, BorderLayout.NORTH);
-
-		JTextField response = new JTextField("Respostas aparecerão aqui...");
-		response.setPreferredSize( new Dimension(frame.getWidth(),70));;
-		frame.add(response, BorderLayout.CENTER);
-		frame.add(response, BorderLayout.SOUTH);
-
-		// 		TENTATIVA DE CENTRAR O TITULO
-		
-		frame.setFont(new Font("Serif", Font.ITALIC, 36));
-		System.out.println(frame.getFont() + "Font");
-		
-		FontMetrics fm = frame.getFontMetrics(frame.getFont());
-		int frameWidth = frame.getWidth();
-		int titleWidth = fm.stringWidth("Cliente");
-		int spaceWidth = fm.stringWidth(" ");
-		int centerPos = (frameWidth / 2) - (titleWidth / 2);
-		int spaceCount = centerPos / spaceWidth;
-		String pad = "";
-		pad = String.format("%" + (spaceCount) + "s", pad);
-		frame.setTitle(pad + "Cliente");
+        
 
 
-	}
+    }
 
-	public static void main(String[] args) {
-		Window window = new Window();
-		window.open();
-
-		System.out.println("Hellooooo");
-
-	}
+    public static void main(String[] args) {
+        Window window = new Window();
+        window.open();
+    }
 
 
 }
