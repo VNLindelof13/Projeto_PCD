@@ -97,8 +97,6 @@ public class Window {
 		Window window = new Window();
 		window.open();
 		System.out.println("Hello World");
-		System.out.println("Hello World");
-
 		
 	}
 
