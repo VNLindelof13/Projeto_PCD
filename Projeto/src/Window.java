@@ -89,14 +89,12 @@ public class Window {
 //      frame.setTitle(pad + "Cliente");
 
 		
-
-
 	}
 
 	public static void main(String[] args) {
 		Window window = new Window();
 		window.open();
-		System.out.println("Hello World");
+		System.out.println("Hellooooo");
 		
 	}
 
