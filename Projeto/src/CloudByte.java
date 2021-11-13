@@ -71,3 +71,4 @@ public class CloudByte implements Serializable {
 		}
 		return count;
 	}
+}
