@@ -6,6 +6,7 @@ import javax.management.RuntimeErrorException;
  * @author luismota
  *
  */
+
 public class CloudByte implements Serializable {
 	byte value;
 	public CloudByte(byte value) {
@@ -71,3 +72,4 @@ public class CloudByte implements Serializable {
 		}
 		return count;
 	}
+}

@@ -18,6 +18,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.io.File;
 
 
 public class Window {
@@ -96,6 +97,8 @@ public class Window {
     public static void main(String[] args) {
         Window window = new Window();
         window.open();
+        File f = new File("data.bin");
+        Node n = new Node(f);
     }
 
 
