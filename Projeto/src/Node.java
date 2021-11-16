@@ -21,8 +21,7 @@ public class Node implements Runnable{
 			byte[] fileContents= Files.readAllBytes(f.toPath());
 			for(int i=0; i<fileContents.length; i++) {
 				cbv[i] = new CloudByte(fileContents[i]);
-				System.out.println(cbv[i]);
-			}
+				}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -46,10 +45,10 @@ public class Node implements Runnable{
 					line = scanner.next();
 					try {
 						a = Integer.parseInt(line);
-						System.out.println("Bit antes: " + cbv[a]);
+						System.out.println("Byte antes: " + cbv[a]);
 						cbv[a].makeByteCorrupt();
-						System.out.println("CORRUMPI O BIT " + a);
-						System.out.println("Bit depois: " + cbv[a]);
+						System.out.println("CORRUMPI O BYTE " + a);
+						System.out.println("Byte depois: " + cbv[a]);
 					} catch (NumberFormatException e) {
 						break;
 					}
