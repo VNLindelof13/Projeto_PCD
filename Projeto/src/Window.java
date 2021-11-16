@@ -97,8 +97,8 @@ public class Window {
     public static void main(String[] args) {
         Window window = new Window();
         window.open();
-        File f = new File("data.bin");
-        Node n = new Node(f);
+        String f = "data.bin";
+        Node n = new Node("127.0.0.1",8080,8081,f);
     }
 
 

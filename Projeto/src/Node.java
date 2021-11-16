@@ -15,8 +15,8 @@ public class Node implements Runnable{
 
 	private CloudByte[] cbv = new CloudByte[1000000];
 
-	public Node(File f){
-		f = new File("data.bin");
+	public Node(String IP_Dir, int port_dir, int port_node, String FileName){
+		File f = new File(FileName);
 		try {
 			byte[] fileContents= Files.readAllBytes(f.toPath());
 			for(int i=0; i<fileContents.length; i++) {
@@ -24,7 +24,6 @@ public class Node implements Runnable{
 				System.out.println(cbv[i]);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		InjectError();
@@ -37,15 +36,20 @@ public class Node implements Runnable{
 	public void InjectError() {
 		Scanner scanner = new Scanner(System.in);
 		int a = 0;
-		boolean xpto = true;
 		while(true) {
 			String line = scanner.next();
+			System.out.println("ENTREI NO WHILE");
 			if(line.equals("ERROR")) {
+				System.out.println("ENTREI NO IF #1");
 				if (scanner.hasNextInt()) {
+					System.out.println("ENTREI NO IF #2");
 					line = scanner.next();
 					try {
 						a = Integer.parseInt(line);
+						System.out.println("Bit antes: " + cbv[a]);
 						cbv[a].makeByteCorrupt();
+						System.out.println("CORRUMPI O BIT " + a);
+						System.out.println("Bit depois: " + cbv[a]);
 					} catch (NumberFormatException e) {
 						break;
 					}
