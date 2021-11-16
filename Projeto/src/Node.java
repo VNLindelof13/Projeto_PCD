@@ -27,6 +27,7 @@ public class Node implements Runnable{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        InjectError();
     }
 
     public Node(){
@@ -36,6 +37,7 @@ public class Node implements Runnable{
     public void InjectError() {
         Scanner scanner = new Scanner(System.in);
         int a = 0;
+        boolean xpto = true;
         while(true) {
             System.out.println("entrou????");
             String line = scanner.next();
@@ -45,12 +47,12 @@ public class Node implements Runnable{
                 line = scanner.next();
                 try {
                     a = Integer.parseInt(line);
+                    cbv[a].makeByteCorrupt();
+                    System.out.println(cbv[a].isParityOk());
                 } catch (NumberFormatException e) {
-                    return;
+                   break;
                 }
                 System.out.println("Conseguimos nao dizemos asneiras");
-                return;
-
             }
         }
         scanner.close();
