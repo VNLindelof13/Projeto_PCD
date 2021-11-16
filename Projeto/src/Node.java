@@ -13,55 +13,56 @@ import java.io.InputStreamReader;
 
 public class Node implements Runnable{
 
-    private CloudByte[] cbv = new CloudByte[1000000];
+	private CloudByte[] cbv = new CloudByte[1000000];
 
-    public Node(File f){
-        f = new File("data.bin");
-        try {
-            byte[] fileContents= Files.readAllBytes(f.toPath());
-            for(int i=0; i<fileContents.length; i++) {
-                cbv[i] = new CloudByte(fileContents[i]);
-                System.out.println(cbv[i]);
-            }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        InjectError();
-    }
+	public Node(String IP_Dir, int port_dir, int port_node, String FileName){
+		File f = new File(FileName);
+		try {
+			byte[] fileContents= Files.readAllBytes(f.toPath());
+			for(int i=0; i<fileContents.length; i++) {
+				cbv[i] = new CloudByte(fileContents[i]);
+				System.out.println(cbv[i]);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		InjectError();
+	}
 
-    public Node(){
+	public Node(){
 
-    }
+	}
 
-    public void InjectError() {
-        Scanner scanner = new Scanner(System.in);
-        int a = 0;
-        boolean xpto = true;
-        while(true) {
-            System.out.println("entrou????");
-            String line = scanner.next();
-            System.out.println(line);
-            if(line.equals("ERROR")) {
-                System.out.println(" nao d");
-                line = scanner.next();
-                try {
-                    a = Integer.parseInt(line);
-                    cbv[a].makeByteCorrupt();
-                    System.out.println(cbv[a].isParityOk());
-                } catch (NumberFormatException e) {
-                   break;
-                }
-                System.out.println("Conseguimos nao dizemos asneiras");
-            }
-        }
-        scanner.close();
-    }
+	public void InjectError() {
+		Scanner scanner = new Scanner(System.in);
+		int a = 0;
+		while(true) {
+			String line = scanner.next();
+			System.out.println("ENTREI NO WHILE");
+			if(line.equals("ERROR")) {
+				System.out.println("ENTREI NO IF #1");
+				if (scanner.hasNextInt()) {
+					System.out.println("ENTREI NO IF #2");
+					line = scanner.next();
+					try {
+						a = Integer.parseInt(line);
+						System.out.println("Bit antes: " + cbv[a]);
+						cbv[a].makeByteCorrupt();
+						System.out.println("CORRUMPI O BIT " + a);
+						System.out.println("Bit depois: " + cbv[a]);
+					} catch (NumberFormatException e) {
+						break;
+					}
+				}
+			}
+		}
+		scanner.close();
+	}
 
 
 
-    @Override
-    public void run() {
+	@Override
+	public void run() {
 
-    }
+	}
 }
