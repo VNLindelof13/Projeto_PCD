@@ -19,6 +19,7 @@ import java.awt.FontMetrics;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.io.File;
+import java.io.IOException;
 
 
 public class Window {
@@ -29,8 +30,7 @@ public class Window {
 
         frame = new JFrame("Client");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        addFrameContent();
-        
+        addFrameContent();        
         frame.pack();
     }
 
@@ -94,11 +94,11 @@ public class Window {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Window window = new Window();
         window.open();
         String f = "data.bin";
-        Node n = new Node("127.0.0.1",8080,8081,f);
+        Node n = new Node("127.0.0.1",8080,8082,f);
     }
 
 
